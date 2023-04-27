@@ -1,0 +1,24 @@
+
+<div class="row">
+    <input type="text" [(ngModel)]="newNameCourse" placeholder="Nombre" />   
+    <input type="date" [(ngModel)]="newStartDate" placeholder="Fecha de inicio" /> 
+    <input type="date" [(ngModel)]="newEndDate" placeholder="Fecha de finalización" />  
+    <button (click)="addItem()">Agregar Curso</button>   
+</div>
+<div class="row" *ngFor="let item of items">
+    <div class="col-8" *ngIf="editId !== item.id">
+        <div class="col-3">{{item.id}}</div>
+        <div class="col-3">{{item.name_course}}</div>
+        <div class="col-3">{{item.start_date}}</div>
+        <div class="col-3">{{item.end_date}}</div>
+        <button (click)="editItem(item)">Editar</button>
+        <button (click)="deleteItem(item.id)">Eliminar</button>   
+    </div>
+    <div class="col-4" *ngIf="editId === item.id">
+        <input type="text" [(ngModel)]="editNameCourse" placeholder="Nombre" />   
+        <input type="date" [(ngModel)]="editStartDate" placeholder="Fecha de inicio" /> 
+        <input type="date" [(ngModel)]="editEndDate" placeholder="Fecha de finalización" />  
+        <button (click)="updateItem()">Guardar</button> 
+        <button (click)="cancelItem()">Eliminar</button>     
+    </div>
+</div>
